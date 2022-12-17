@@ -19,36 +19,49 @@ const newRecipe = {
   duration: 1.3,
 };
 // Connection to the database "recipe-app"
-mongoose
-  .connect(MONGODB_URI)
-  .then((x) => {
-    console.log(`Connected to the database: "${x.connection.name}"`);
-    // Before adding any recipes to the database, let's remove all existing ones
-    return Recipe.deleteMany();
-  })
-  // iteration 2
-  // .then(() => {
-  //return Recipe.create(newRecipe);
-  // })
-  // iteration 3
-  .then(() => {
-    return Recipe.insertMany(data);
-  })
-  // iteration 2
-  //.then(( recipeInserted ) => console.log(recipeInserted.title))
-  // iteration 3
-  // .then((allRecipesFromDB) =>
-  //   allRecipesFromDB.forEach((recipeFromDB) => {
-  //     console.log(recipeFromDB.title);
-  //   })
-  // )
-  // iteration 4
-  .then(() => {
-    return Recipe.findOneAndUpdate(
-      { title: "Rigatoni alla Genovese" },
-      { duration: 100 }
-    );
-  })
-  .catch((error) => {
-    console.error("Error connecting to the database", error);
-  });
+mongoose.connect(MONGODB_URI).then((x) => {
+  console.log(`Connected to the database: "${x.connection.name}"`);
+  // Before adding any recipes to the database, let's remove all existing ones
+  return Recipe.deleteMany();
+});
+// iteration 2
+// .then(() => {
+//return Recipe.create(newRecipe);
+// })
+// iteration 3
+// .then(() => {
+//   return Recipe.insertMany(data);
+// })
+// iteration 2
+//.then(( recipeInserted ) => console.log(recipeInserted.title))
+// iteration 3
+// .then((allRecipesFromDB) =>
+//   allRecipesFromDB.forEach((recipeFromDB) => {
+//     console.log(recipeFromDB.title);
+//   })
+// )
+// iteration 4
+// .then(() => {
+//   return Recipe.findOneAndUpdate(
+//     { title: "Rigatoni alla Genovese" },
+//     { duration: 100 }
+//   );
+// })
+// .catch((error) => {
+//   console.error("Error connecting to the database", error);
+// });
+//iteration 5
+// .then(() => {
+//   return Recipe.findOneAndUpdate(
+//     { title: "Rigatoni alla Genovese" },
+//     { duration: 100 }
+//   );
+// })
+// .then(() => {
+//   return Recipe.deleteOne({ title: "Carrot Cake" }, console.log("sucess"));
+// })
+// .catch((error) => {
+//   console.error("Error connecting to the database", error);
+// });
+//Iteration 6
+//.then(() => mongoose.connection.close());
