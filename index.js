@@ -26,16 +26,29 @@ mongoose
     // Before adding any recipes to the database, let's remove all existing ones
     return Recipe.deleteMany();
   })
+  // iteration 2
+  // .then(() => {
+  //return Recipe.create(newRecipe);
+  // })
+  // iteration 3
   .then(() => {
-    //return Recipe.create(newRecipe); iteration 2
     return Recipe.insertMany(data);
   })
-  //.then(( recipeInserted ) => console.log(recipeInserted.title)) iteration 2
-  .then((allRecipesFromDB) =>
-    allRecipesFromDB.forEach((recipeFromDB) => {
-      console.log(recipeFromDB.title);
-    })
-  )
+  // iteration 2
+  //.then(( recipeInserted ) => console.log(recipeInserted.title))
+  // iteration 3
+  // .then((allRecipesFromDB) =>
+  //   allRecipesFromDB.forEach((recipeFromDB) => {
+  //     console.log(recipeFromDB.title);
+  //   })
+  // )
+  // iteration 4
+  .then(() => {
+    return Recipe.findOneAndUpdate(
+      { title: "Rigatoni alla Genovese" },
+      { duration: 100 }
+    );
+  })
   .catch((error) => {
     console.error("Error connecting to the database", error);
   });
